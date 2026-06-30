@@ -5,8 +5,6 @@ An AI-powered English Speaking Tutor built using React, FastAPI, Gemini AI, and 
 ## 🚀 Live Demo
 https://fluent-face-ai.vercel.app
 
-## 💻 GitHub Repository
-https://github.com/Kajal3245/FluentFaceAI
 
 ## Features
 - 🎤 Speech Recognition
