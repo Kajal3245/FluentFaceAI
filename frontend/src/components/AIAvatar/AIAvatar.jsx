@@ -3,8 +3,27 @@ import "./AIAvatar.css";
 
 function AIAvatar({ state = "idle", speaking = false }) {
 
+    const [eyesOpen, setEyesOpen] = useState(true);
     const [mouthOpen, setMouthOpen] = useState(false);
 
+    // Eye blinking
+    useEffect(() => {
+
+        const blinkInterval = setInterval(() => {
+
+            setEyesOpen(false);
+
+            setTimeout(() => {
+                setEyesOpen(true);
+            }, 200);
+
+        }, 3000);
+
+        return () => clearInterval(blinkInterval);
+
+    }, []);
+
+    // Mouth animation while speaking
     useEffect(() => {
 
         let interval;
@@ -12,7 +31,9 @@ function AIAvatar({ state = "idle", speaking = false }) {
         if (speaking) {
 
             interval = setInterval(() => {
+
                 setMouthOpen(prev => !prev);
+
             }, 180);
 
         } else {
@@ -25,11 +46,24 @@ function AIAvatar({ state = "idle", speaking = false }) {
 
     }, [speaking]);
 
-    const avatarImage = mouthOpen
-        ? "/images/abhishek_open.png"
-        : "/images/abhishek_closed.png";
+    let avatarImage;
+
+    if (speaking) {
+
+        avatarImage = mouthOpen
+            ? "/images/abhishek_open.png"
+            : "/images/abhishek_closed.png";
+
+    } else {
+
+        avatarImage = eyesOpen
+            ? "/images/abhishek_open.png"
+            : "/images/abhishek_closed.png";
+
+    }
 
     return (
+
         <div className={`avatar-wrapper ${state}`}>
 
             <img
@@ -51,7 +85,9 @@ function AIAvatar({ state = "idle", speaking = false }) {
             </div>
 
         </div>
+
     );
+
 }
 
 export default AIAvatar;

@@ -11,9 +11,9 @@ function LandingPage() {
       <h1>FluentFace AI</h1>
 
       <img
-  src="/images/abhishek_closed.png"
-  alt="Abhishek"
-  className="landing-avatar"
+    src="/images/abhishek_open.png"
+    alt="Abhishek"
+    className="landing-avatar"
 />
 
 <h2>Meet Abhishek</h2>
